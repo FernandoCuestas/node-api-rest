@@ -8,4 +8,4 @@
 -Siempre ubicado en el directorio raiz!.
  $ git push heroku master   // Para implementar el codigo.
  $ heroku ps:scale web=1   //  Ejecutamos una instacia de la aplicacion ( un contenedor conocido como Dyno ).
- $ heroku open            //   Se abre el navegador con la url con el nombre de la aplicación.
+ $ heroku open            //  Se abre el navegador con la url con el nombre de la aplicación.
