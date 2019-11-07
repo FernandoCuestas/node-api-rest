@@ -1,13 +1,11 @@
-'use strict'
+import User from '../models/user';
+import service from '../services';
 
-const User = require('../models/user')
-const service = require('../services')
-
-function signUp (req, res) {
+function signUp({body}, res) {
   const user = new User({
-    email: req.body.email,
-    displayName: req.body.displayName,
-    password: req.body.password
+    email: body.email,
+    displayName: body.displayName,
+    password: body.password
   })
 
   user.save((err) => {
@@ -30,7 +28,7 @@ function signIn (req, res) {
   })
 }
 
-module.exports = {
+export default {
   signUp,
   signIn
-}
+};

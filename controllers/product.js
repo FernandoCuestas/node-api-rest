@@ -1,9 +1,7 @@
-'use strict'
+import Product from '../models/product';
 
-const Product = require('../models/product')
-
-function getProduct (req, res) {
-  let productId = req.params.productId
+function getProduct({params}, res) {
+  let productId = params.productId
 
   Product.findById(productId, (err, product) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
@@ -22,16 +20,16 @@ function getProducts (req, res) {
   })
 }
 
-function saveProduct (req, res) {
+function saveProduct({body}, res) {
   console.log('POST /api/product')
-  console.log(req.body)
+  console.log(body)
 
   let product = new Product()
-  product.name = req.body.name
-  product.picture = req.body.picture
-  product.price = req.body.price
-  product.category = req.body.category
-  product.description = req.body.description
+  product.name = body.name
+  product.picture = body.picture
+  product.price = body.price
+  product.category = body.category
+  product.description = body.description
 
   product.save((err, productStored) => {
     if (err) res.status(500).send({message: `Error al salvar en la base de datos: ${err} `})
@@ -40,9 +38,9 @@ function saveProduct (req, res) {
   })
 }
 
-function updateProduct (req, res) {
-  let productId = req.params.productId
-  let update = req.body
+function updateProduct({params, body}, res) {
+  let productId = params.productId
+  let update = body
 
   Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
     if (err) res.status(500).send({message: `Error al actualizar el producto: ${err}`})
@@ -51,8 +49,8 @@ function updateProduct (req, res) {
   })
 }
 
-function deleteProduct (req, res) {
-  let productId = req.params.productId
+function deleteProduct({params}, res) {
+  let productId = params.productId
 
   Product.findById(productId, (err, product) => {
     if (err) res.status(500).send({message: `Error al borrar el producto: ${err}`})
@@ -64,10 +62,10 @@ function deleteProduct (req, res) {
   })
 }
 
-module.exports = {
+export default {
   getProduct,
   getProducts,
   saveProduct,
   updateProduct,
   deleteProduct
-}
+};

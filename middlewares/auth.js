@@ -1,6 +1,4 @@
-'use strict'
-
-const services = require('../services')
+import services from '../services';
 
 function isAuth (req, res, next) {
   if (!req.headers.authorization) {
@@ -14,9 +12,9 @@ function isAuth (req, res, next) {
       req.user = response
       next()
     })
-    .catch(response => {
-      res.status(response.status)
+    .catch(({status}) => {
+      res.status(status)
     })
 }
 
-module.exports = isAuth
+export default isAuth;

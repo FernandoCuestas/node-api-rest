@@ -1,9 +1,7 @@
-'use strict'
-
-const express = require('express')
-const productCtrl = require('../controllers/product')
-const userCtrl = require('../controllers/user')
-const auth = require('../middlewares/auth')
+import express from 'express';
+import productCtrl from '../controllers/product';
+import userCtrl from '../controllers/user';
+import auth from '../middlewares/auth';
 const api = express.Router()
 
 api.get('/product', auth, productCtrl.getProducts)
@@ -17,4 +15,4 @@ api.get('/private', auth, (req, res) => {
   res.status(200).send({ message: 'Tienes acceso' })
 })
 
-module.exports = api
+export default api;
