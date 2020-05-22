@@ -12,5 +12,8 @@ mongoose.connect(config.db, (err, res) => {
     console.log(`API REST corriendo en http://localhost:${config.port}`)
     console.log(`API REST corriendo en http://localhost:${config.port}`)
     console.log(`API REST corriendo en http://localhost:${config.port}`)
+    console.log(`API REST corriendo en http://localhost:${config.port}`)console.log(`API REST corriendo en http://localhost:${config.port}`)console.log(`API REST corriendo en http://localhost:${config.port}`)
+    console.log(`API REST corriendo en http://localhost:${config.port}`)
+    console.log(`API REST corriendo en http://localhost:${config.port}`)
   })
 })
